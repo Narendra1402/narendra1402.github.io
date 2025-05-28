@@ -219,9 +219,18 @@
 							<div class="overlay">
 								<div class="row">
 									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
+									  <div class="about-img" style="display: flex; justify-content: center;">
+ 										 <style>
+										    @media (max-width: 768px) {
+     											 .about-img {
+       											 display: flex !important;
+  										         justify-content: center !important;
+				
+  										     }
+										    }
+ 											 </style>
+										  <img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+										</div>
 									</div>
 									<!-- Details next to profile image -->
 									<div class="col-sm-6 col-md-7">
@@ -291,23 +300,33 @@
 									
 								</ul>
 							</div>
-						</div>
-
-
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p class="mb-4">
-									<span class="number" data-number="30">0</span> <span>+</span>
-									<span>&nbsp; Projects completed</span>
-								</p>
-								<p><a href="https://www.linkedin.com/in/narendrasingh1402/" target="_blank"; class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-							</div>
-						</div>
+						</div>						
 					</div>
 				</div>
 			</div>
 		</div>
     </section>
+	  <div class="counter-wrap ftco-animate d-flex mt-md-3">
+  <style>
+    @media (max-width: 768px) {
+      .counter-wrap {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+  <div class="text mx-auto text-md-left text-center">
+    <p class="mb-4">
+      <span class="number" data-number="30">0</span> <span>+</span>
+      <span>&nbsp; Projects completed</span>
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/narendrasingh1402/" target="_blank" class="btn btn-primary py-3 px-3">LinkedIn</a>
+    </p>
+  </div>
+</div>
 
 
 
