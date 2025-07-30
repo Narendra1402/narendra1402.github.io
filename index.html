@@ -696,6 +696,20 @@
     }
   }
 </script>
+<script>
+  window.addEventListener("load", () => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Delay a little to make sure the form is in the DOM
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // 200ms delay after load
+    }
+  });
+</script>
     
   </body>
 </html>
