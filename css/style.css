@@ -9703,3 +9703,165 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+/*======================================
+//--//-->   ABOUT
+======================================*/
+
+.about-mf .box-shadow-full {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.about-mf .about-img {
+  margin-bottom: 2rem;
+}
+
+.about-mf .about-img img {
+  margin-left: 10px;
+}
+
+
+.skill-mf .progress {
+  /* background-color: #cde1f8; */
+  margin: .5rem 0 1.2rem 0;
+  border-radius: 0;
+  height: .7rem;
+}
+
+.skill-mf .progress .progress-bar {
+  height: .7rem;
+  background-color: #ffc107;
+}
+
+
+/* Animation styles */
+#typing-animation {
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(20, end) infinite;
+}
+
+#typing-animation:before {
+  content: "";
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ccc;
+  animation: typing-cursor 0.5s ease-in-out infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing-cursor {
+  from {
+    width: 5px;
+  }
+  to {
+    width: 0;
+  }
+}
+
+
+/* project image zoom effect */
+
+.zoom-effect {
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+}
+
+.zoom-effect:hover {
+  transform: scale(1.1);
+}
+
+.modern-grid-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    .modern-grid-form input,
+    .modern-grid-form textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #666;
+      padding: 8px 5px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .modern-grid-form input:focus,
+    .modern-grid-form textarea:focus {
+      border-bottom: 1px solid #f5c518;
+    }
+
+    .modern-grid-form textarea {
+  resize: none;
+}
+
+    .submit-btn,
+      .sent-msg {
+        grid-column: 2 / 3;
+        justify-self: end;
+        height: 38px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      .submit-btn {
+        padding: 6px 18px;
+        border: 1px solid #f5c518;
+        background: transparent;
+        color: #f5c518;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #f5c518;
+        color: #111;
+      }
+
+      .sent-msg {
+        display: none;
+        color: #00ff88;
+        font-weight: bold;
+        align-self: center;
+      }
+
+      @media screen and (max-width: 768px) {
+  .modern-grid-form {
+    grid-template-columns: 1fr;
+  }
+
+  .modern-grid-form input,
+  .modern-grid-form textarea {
+    grid-column: 1 / 2 !important;
+  }
+
+  .submit-btn,
+  .sent-msg {
+    grid-column: 1 / 2;
+    justify-self: center;
+    text-align: center;
+    width: 150px;
+  }
+}
