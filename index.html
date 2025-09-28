@@ -580,7 +580,6 @@
     <input type="email" name="email" placeholder="Email Address (Required)" required>
 
     <!-- Line 2 -->
-    <input type="text" name="visit" placeholder="Subject">
     <textarea name="meeting" rows="3" placeholder="Message"></textarea>
 
     <!-- Submit Button -->
@@ -651,8 +650,11 @@ async function handleSubmit(event) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
+  const btn = document.getElementById("sendBtn");
+  btn.disabled = true; // disable button while sending
+
   try {
-   const res = await fetch("https://flask-contact-api-7ydm.onrender.com/send", {
+    const res = await fetch("https://flask-contact-api-7ydm.onrender.com/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -663,7 +665,12 @@ async function handleSubmit(event) {
     const result = await res.json();
 
     if (res.ok) {
-      document.getElementById("sentMsg").style.display = "block";
+      const msg = document.getElementById("sentMsg");
+      msg.style.display = "block";
+
+      // hide after 3 sec
+      setTimeout(() => (msg.style.display = "none"), 3000);
+
       form.reset();
     } else {
       alert("Error: " + result.error);
@@ -671,8 +678,10 @@ async function handleSubmit(event) {
   } catch (err) {
     console.error("Network error:", err);
     alert("Could not send message.");
+  } finally {
+    btn.disabled = false; // re-enable button after request
   }
-}
+} // ✅ this was missing
 </script>
 
 <script>
