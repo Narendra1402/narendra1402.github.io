@@ -572,30 +572,26 @@
     </div>
 		<!-- Contact Form & Image -->
     <div class="form-section-wrapper">
-    
-    <p>If you're interested in working together or have any inquiries, please fill out the form below. I’ll get back to you shortly—looking forward to connecting with you!</p>
+  <p>
+    If you're interested in working together or have any inquiries, please fill
+    out the form below. I’ll get back to you shortly—looking forward to connecting
+    with you!
+  </p>
 
-    <form
-      class="modern-grid-form"
-      id="contactForm"
-      onsubmit="handleSubmit(event)"
-    >
+  <form class="modern-grid-form" id="contactForm" onsubmit="handleSubmit(event)">
     <!-- Line 1 -->
     <input type="text" name="fullname" placeholder="Full name (Required)" required>
     <input type="email" name="email" placeholder="Email Address (Required)" required>
 
     <!-- Line 2 -->
     <input type="text" name="visit" placeholder="Subject">
-    <input type="text" name="meeting" placeholder="Message">
+    <textarea name="meeting" rows="3" placeholder="Message"></textarea>
 
-    <!-- Line 3 -->
-  <!--<textarea name="notes" rows="3" placeholder="Optional"></textarea>-->
-
-    <!-- Button aligned to right of line 3 -->
+    <!-- Submit Button -->
     <button type="submit" class="submit-btn" id="sendBtn">SEND</button>
-      <div class="sent-msg" id="sentMsg">✔ Sent</div><br>
+    <div class="sent-msg" id="sentMsg" style="display:none;">✔ Sent</div>
   </form>
-  </div>	
+</div>
 
     
 
@@ -652,50 +648,37 @@
   
   <script src="js/main.js"></script>
   <script>
-   async function handleSubmit(event) {
-    event.preventDefault();
+async function handleSubmit(event) {
+  event.preventDefault();
 
-    const form = document.getElementById("contactForm");
-    const formData = new FormData(form);
+  const form = document.getElementById("contactForm");
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-    const data = {
-      fullname: formData.get("fullname"),
-      email: formData.get("email"),
-      visit: formData.get("visit"),
-      meeting: formData.get("meeting"),
-      notes: formData.get("notes")
-    };
+  try {
+    const res = await fetch("https://your-backend-url.com/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-    try {
-      const response = await fetch("https://flask-contact-api-7ydm.onrender.com/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+    const result = await res.json();
 
-      if (response.ok) {
-        form.reset();
-
-        // Feedback to user
-        document.getElementById("sendBtn").style.display = "none";
-        document.getElementById("sentMsg").style.display = "block";
-
-        setTimeout(() => {
-          document.getElementById("sentMsg").style.display = "none";
-          document.getElementById("sendBtn").style.display = "block";
-        }, 5000);
-      } else {
-        const result = await response.json();
-        alert("Failed to send message: " + (result?.error || "Unknown error"));
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error sending message. Check internet or try again.");
+    if (res.ok) {
+      document.getElementById("sentMsg").style.display = "block";
+      form.reset();
+    } else {
+      alert("Error: " + result.error);
     }
+  } catch (err) {
+    console.error("Network error:", err);
+    alert("Could not send message.");
   }
+}
 </script>
+
 <script>
   window.addEventListener("load", () => {
     const hash = window.location.hash;
