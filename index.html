@@ -653,7 +653,7 @@ async function handleSubmit(event) {
   const data = Object.fromEntries(formData.entries());
 
   try {
-    const res = await fetch("https://flask-contact-api-7ydm.onrender.com", {
+   const res = await fetch("https://flask-contact-api-7ydm.onrender.com/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
