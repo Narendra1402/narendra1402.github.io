@@ -656,7 +656,7 @@ async function handleSubmit(event) {
   const data = Object.fromEntries(formData.entries());
 
   try {
-    const res = await fetch("https://your-backend-url.com/send", {
+    const res = await fetch("https://your-real-backend.onrender.com/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
