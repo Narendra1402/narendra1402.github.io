@@ -99,7 +99,8 @@
 						
 <script>
   const typingAnimationElement = document.getElementById("typing-animation");
-  const typingTexts = ["Engineer", "Freelancer", "Teacher"];
+  const typingTexts = ["Engineer", //"Freelancer", "Teacher"//
+					   ];
 
   function playTypingAnimation(textIndex = 0, charIndex = 0) {
     const currentText = typingTexts[textIndex];
