@@ -96,35 +96,20 @@
 						<!-- Element to contain animated typing -->
 						<span id="typing-animation"></span>
 
-						<script>
-(function() {
-  const typingAnimationElement = document.getElementById('typing-animation');
-  if (!typingAnimationElement) return;  // element nahi mila toh stop
-
-  const typingTexts = [
-    'Engineer  ',
-    // 'Freelancer   ',
-    // 'Teacher   ',
-  ];
-
-  function playTypingAnimation(text) {
-    for (let i = 0; i < text.length; i++) {
-      setTimeout(() => {
-        typingAnimationElement.textContent += text[i];
-      }, i * 200);
-    }
-
-    setTimeout(() => {
-      typingAnimationElement.textContent = '';
-      playTypingAnimation(
-        typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]
-      );
-    }, text.length * 200);
-  }
-
-  playTypingAnimation(typingTexts[0]);
-})();
-</script>
+						
+<script>  
+	const typingAnimationElement = document.getElementById('typing-animation'); 
+	const typingTexts = 
+		[ 'Engineer ', 
+		  'Freelancer ', 
+		  'Teacher ', ]; 
+	function playTypingAnimation(text) {  
+		for (let i = 0; i < text.length; i++) { 
+			setTimeout(() => { 
+				typingAnimationElement.textContent += text[i]; }, i * 200); 
+			setTimeout(() => { typingAnimationElement.textContent = ''; 
+							  playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]); }, text.length * 200); } 
+		</script>
 
 						<br>
 						<br>
